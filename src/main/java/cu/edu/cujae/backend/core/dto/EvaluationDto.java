@@ -1,0 +1,98 @@
+package cu.edu.cujae.backend.core.dto;
+
+import java.util.Date;
+
+
+public class EvaluationDto {
+
+	protected Integer id_evaluation;
+	protected Float evaluation;
+	protected Integer id_subject;
+	protected Integer id_student_history;
+	protected Date date;
+
+
+	public EvaluationDto() {
+		super();
+
+	}
+
+
+	public EvaluationDto(Integer id_evaluation, Float evaluation, Integer id_subject, Integer id_student_history, Date date) {
+
+		super();
+		this.id_evaluation = id_evaluation;
+		this.evaluation = evaluation;
+		this.id_subject = id_subject;
+		this.id_student_history = id_student_history;
+		this.date = date;
+	}
+
+
+	public EvaluationDto(EvaluationDto evaluationDto) {
+		super();
+		this.id_evaluation = evaluationDto.getId_evaluation();
+		this.evaluation = evaluationDto.getEvaluation();
+		this.id_subject = evaluationDto.getId_subject();
+		this.id_student_history = evaluationDto.getId_student_history();
+		this.date = evaluationDto.getDate();
+	}
+
+
+	public Integer getId_evaluation() {
+		return id_evaluation;
+	}
+
+
+	public Float getEvaluation() {
+		return evaluation;
+	}
+
+
+	public Integer getId_subject() {
+		return id_subject;
+	}
+
+
+	public Integer getId_student_history() {
+		return id_student_history;
+	}
+
+
+	public Date getDate() {
+		return date;
+	}
+
+
+	public void setId_evaluation(Integer id_evaluation) {
+		this.id_evaluation = id_evaluation;
+	}
+
+
+	public void setEvaluation(Float evaluation) {
+		this.evaluation = evaluation;
+	}
+
+
+	public void setId_subject(Integer id_subject) {
+		this.id_subject = id_subject;
+	}
+
+
+	public void setId_student_history(Integer id_student_history) {
+		this.id_student_history = id_student_history;
+	}
+
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+
+	public String toString() {
+		return id_evaluation.toString();
+
+	}
+
+
+}
