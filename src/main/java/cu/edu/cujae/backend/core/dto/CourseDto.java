@@ -1,7 +1,7 @@
 package cu.edu.cujae.backend.core.dto;
 
-import java.util.Date;
 
+import java.sql.Date;
 
 public class CourseDto {
 
@@ -50,7 +50,7 @@ public class CourseDto {
         this.course = course;
     }
 
-    public Date getBegin_date() {
+    public java.sql.Date getBegin_date() {
         return begin_date;
     }
     public void setBegin_date(Date begin_date) {

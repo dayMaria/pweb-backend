@@ -20,7 +20,6 @@ import cu.edu.cujae.backend.core.service.UserService;
 @RestController
 @RequestMapping("/api/v1/users")
 public class UserController {
-	
 	@Autowired
 	private UserService userService;
 	

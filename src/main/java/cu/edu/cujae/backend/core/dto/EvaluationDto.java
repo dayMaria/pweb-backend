@@ -1,12 +1,12 @@
 package cu.edu.cujae.backend.core.dto;
 
-import java.util.Date;
 
+import java.sql.Date;
 
 public class EvaluationDto {
 
 	protected Integer id_evaluation;
-	protected Float evaluation;
+	protected Integer evaluation;
 	protected Integer id_subject;
 	protected Integer id_student_history;
 	protected Date date;
@@ -18,7 +18,7 @@ public class EvaluationDto {
 	}
 
 
-	public EvaluationDto(Integer id_evaluation, Float evaluation, Integer id_subject, Integer id_student_history, Date date) {
+	public EvaluationDto(Integer id_evaluation, Integer evaluation, Integer id_subject, Integer id_student_history, Date date) {
 
 		super();
 		this.id_evaluation = id_evaluation;
@@ -44,7 +44,7 @@ public class EvaluationDto {
 	}
 
 
-	public Float getEvaluation() {
+	public Integer getEvaluation() {
 		return evaluation;
 	}
 
@@ -59,7 +59,7 @@ public class EvaluationDto {
 	}
 
 
-	public Date getDate() {
+	public java.sql.Date getDate() {
 		return date;
 	}
 
@@ -69,7 +69,7 @@ public class EvaluationDto {
 	}
 
 
-	public void setEvaluation(Float evaluation) {
+	public void setEvaluation(Integer evaluation) {
 		this.evaluation = evaluation;
 	}
 
