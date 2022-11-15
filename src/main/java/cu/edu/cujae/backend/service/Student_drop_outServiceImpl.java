@@ -71,7 +71,7 @@ public class Student_drop_outServiceImpl implements Student_drop_outService {
     @Override
     public void deleteStudent_drop_outDto(Integer id) throws SQLException {
         CallableStatement CS = jdbcTemplate.getDataSource().getConnection().prepareCall(
-                "{call drop_out_cause_delete(?)}");
+                "{call student_drop_out_delete(?)}");
 
         CS.setInt(1, id);
         CS.executeUpdate();

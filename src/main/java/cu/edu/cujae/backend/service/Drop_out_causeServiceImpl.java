@@ -20,8 +20,10 @@ public class Drop_out_causeServiceImpl implements Drop_out_causeService {
 
     @Override
     public void createDrop_out_cause(Drop_out_causeDto drop_out_cause) throws SQLException {
-        CallableStatement CS = jdbcTemplate.getDataSource().getConnection().prepareCall("{call drop_out_cause_insert(?)}");
-        CS.setString(1,drop_out_cause.getDrop_out_cause());
+        CallableStatement CS = jdbcTemplate.getDataSource().getConnection().prepareCall("{call drop_out_cause_insert(?,?)}");
+        CS.setInt(1,drop_out_cause.getId_drop_out_cause());
+        CS.setString(2,drop_out_cause.getDrop_out_cause());
+
 
         CS.executeUpdate();
     }
@@ -38,7 +40,7 @@ public class Drop_out_causeServiceImpl implements Drop_out_causeService {
                 "SELECT * FROM drop_out_cause");
 
         while(rs.next()){
-            drop_out_causeList.add(new Drop_out_causeDto(rs.getInt("id_drop_out_cause")
+            drop_out_causeList.add(new Drop_out_causeDto(rs.getInt("id_droup_out_cause")
                     ,rs.getString("drop_out_cause")));
         }
         return drop_out_causeList;
@@ -49,14 +51,14 @@ public class Drop_out_causeServiceImpl implements Drop_out_causeService {
         Drop_out_causeDto drop_out_cause = null;
 
         PreparedStatement pstmt = jdbcTemplate.getDataSource().getConnection().prepareStatement(
-                "SELECT * FROM course where id_drop_out_cause = ?");
+                "SELECT * FROM drop_out_cause where id_droup_out_cause = ?");
 
         pstmt.setInt(1, Id);
 
         ResultSet rs = pstmt.executeQuery();
 
         while(rs.next()){
-            drop_out_cause = new Drop_out_causeDto(rs.getInt("id_drop_out_cause")
+            drop_out_cause = new Drop_out_causeDto(rs.getInt("id_droup_out_cause")
                     ,rs.getString("drop_out_cause"));
         }
         return drop_out_cause;

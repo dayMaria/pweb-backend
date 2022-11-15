@@ -30,7 +30,7 @@ public class StudentServiceImpl implements StudentService {
         CS.setString(5,student.getSex());
         CS.setInt(6, student.getId_town());
         CS.setInt(7, student.getId_student());
-        CS.setInt(1, student.getId_student_history());
+        CS.setInt(8, student.getId_student_history());
 
         CS.executeUpdate();
     }

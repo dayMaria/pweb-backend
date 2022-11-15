@@ -27,7 +27,7 @@ public class EvaluationServiceImpl implements EvaluationService {
         CS.setInt(1,evaluation.getEvaluation());
         CS.setInt(2, evaluation.getId_subject());
         CS.setInt(3, evaluation.getId_student_history());
-        CS.setDate(3,evaluation.getDate());
+        CS.setDate(4,evaluation.getDate());
 
         CS.executeUpdate();
     }
@@ -41,7 +41,7 @@ public class EvaluationServiceImpl implements EvaluationService {
     public List<EvaluationDto> listEvaluation() throws SQLException {
         List<EvaluationDto> evaluationList = new ArrayList<EvaluationDto>();
         ResultSet rs = jdbcTemplate.getDataSource().getConnection().createStatement().executeQuery(
-                "SELECT * FROM course");
+                "SELECT * FROM evaluation");
 
         while(rs.next()){
             evaluationList.add(new EvaluationDto(rs.getInt("id_evaluation")
