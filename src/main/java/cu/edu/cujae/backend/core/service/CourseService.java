@@ -11,7 +11,7 @@ public interface CourseService {
 
     void createCourse(CourseDto courseDto) throws SQLException;
 
-    void updateCourse(CourseDto courseDto);
+    void updateCourse(CourseDto courseDto) throws SQLException;
 
     List<CourseDto> listCourse() throws SQLException;
 

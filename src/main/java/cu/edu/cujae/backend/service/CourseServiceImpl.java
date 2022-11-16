@@ -10,26 +10,33 @@ import org.springframework.stereotype.Service;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+
 @Service
 @Component
-public class CourseServiceImpl implements CourseService{
+public class CourseServiceImpl implements CourseService {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
 
     @Override
     public void createCourse(CourseDto courseDto) throws SQLException {
-            CallableStatement CS = jdbcTemplate.getDataSource().getConnection().prepareCall("{call course_insert(?, ?, ?)}");
-            CS.setString(1,courseDto.getCourse());
-            CS.setDate(2, courseDto.getBegin_date());
-            CS.setDate(3, courseDto.getEnd_date());
+        CallableStatement CS = jdbcTemplate.getDataSource().getConnection().prepareCall("{call course_insert(?, ?, ?)}");
+        CS.setString(1, courseDto.getCourse());
+        CS.setDate(2, courseDto.getBegin_date());
+        CS.setDate(3, courseDto.getEnd_date());
 
         CS.executeUpdate();
     }
 
     @Override
-    public void updateCourse(CourseDto courseDto) {
-
+    public void updateCourse(CourseDto courseDto) throws SQLException {
+        CallableStatement CS = jdbcTemplate.getDataSource().getConnection().prepareCall("{call course_update(?,?,?,?)}");
+        CS.setInt(1,courseDto.getId_course());
+        CS.setString(2, courseDto.getCourse());
+        CS.setDate(3, courseDto.getBegin_date());
+        CS.setDate(4, courseDto.getEnd_date());
+        CS.execute();
+        CS.close();
     }
 
     @Override
@@ -38,11 +45,11 @@ public class CourseServiceImpl implements CourseService{
         ResultSet rs = jdbcTemplate.getDataSource().getConnection().createStatement().executeQuery(
                 "SELECT * FROM course");
 
-        while(rs.next()){
+        while (rs.next()) {
             courseList.add(new CourseDto(rs.getInt("id_course")
-                    ,rs.getString("course")
-                    ,rs.getDate("begin_date")
-                    ,rs.getDate("end_date")));
+                    , rs.getString("course")
+                    , rs.getDate("begin_date")
+                    , rs.getDate("end_date")));
         }
         return courseList;
     }
@@ -58,11 +65,11 @@ public class CourseServiceImpl implements CourseService{
 
         ResultSet rs = pstmt.executeQuery();
 
-        while(rs.next()){
+        while (rs.next()) {
             course = new CourseDto(rs.getInt("id_course")
-                    ,rs.getString("course")
-                    ,rs.getDate("begin_date")
-                    ,rs.getDate("end_date"));
+                    , rs.getString("course")
+                    , rs.getDate("begin_date")
+                    , rs.getDate("end_date"));
         }
         return course;
     }
