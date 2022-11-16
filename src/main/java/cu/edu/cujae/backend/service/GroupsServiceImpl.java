@@ -43,7 +43,7 @@ public class GroupsServiceImpl implements GroupsService {
                 "SELECT * FROM groups");
 
         while(rs.next()){
-            groupsList.add(new GroupsDto(rs.getInt("id_group")
+            groupsList.add(new GroupsDto(rs.getInt("id_groups")
                     ,rs.getString("group_name")
                     ,rs.getInt("id_year")));
         }
@@ -55,14 +55,14 @@ public class GroupsServiceImpl implements GroupsService {
         GroupsDto groups = null;
 
         PreparedStatement pstmt = jdbcTemplate.getDataSource().getConnection().prepareStatement(
-                "SELECT * FROM groups where id_group = ?");
+                "SELECT * FROM groups where id_groups = ?");
 
         pstmt.setInt(1, id);
 
         ResultSet rs = pstmt.executeQuery();
 
         while(rs.next()){
-            groups = new GroupsDto(rs.getInt("id_group")
+            groups = new GroupsDto(rs.getInt("id_groups")
                     ,rs.getString("group_name")
                     ,rs.getInt("id_year"));
         }

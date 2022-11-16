@@ -1,7 +1,8 @@
-package cu.edu.cujae.backend.core.service;
+package cu.edu.cujae.backend.service;
 
 import cu.edu.cujae.backend.core.dto.CourseDto;
 import cu.edu.cujae.backend.core.dto.SemesterDto;
+import cu.edu.cujae.backend.core.service.SemesterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
@@ -16,18 +17,18 @@ import java.util.List;
 
 @Service
 @Component
-public class SemesterServiceImpl implements SemesterService{
+public class SemesterServiceImpl implements SemesterService {
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
     @Override
     public void createSemester(SemesterDto semester) throws SQLException {
-        CallableStatement CS = jdbcTemplate.getDataSource().getConnection().prepareCall("{call semester_insert(?, ?, ?, ?, ?)}");
+        CallableStatement CS = jdbcTemplate.getDataSource().getConnection().prepareCall("{call semester_insert(?, ?, ?, ?)}");
         CS.setInt(1,semester.getId_semester());
         CS.setString(2,semester.getSemester());
-        CS.setInt(3,semester.getHour());
-        CS.setInt(4,semester.getId_year());
-        CS.setInt(5,semester.getId_subject_history());
+
+        CS.setInt(3,semester.getId_year());
+        CS.setInt(4,semester.getId_subject_history());
 
         CS.executeUpdate();
     }
@@ -46,7 +47,6 @@ public class SemesterServiceImpl implements SemesterService{
         while(rs.next()){
             semesterList.add(new SemesterDto(rs.getInt("id_semester")
                     ,rs.getString("semester")
-                    ,rs.getInt("hour")
                     ,rs.getInt("id_year")
                     ,rs.getInt("id_subject_history")));
         }
@@ -67,7 +67,6 @@ public class SemesterServiceImpl implements SemesterService{
         while(rs.next()){
             semester = new SemesterDto(rs.getInt("id_semester")
                     ,rs.getString("semester")
-                    ,rs.getInt("hour")
                     ,rs.getInt("id_year")
                     ,rs.getInt("id_subject_history"));
         }
