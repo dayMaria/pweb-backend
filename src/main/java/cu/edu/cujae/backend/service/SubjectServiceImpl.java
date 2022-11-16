@@ -23,9 +23,9 @@ public class SubjectServiceImpl implements SubjectService {
     @Override
     public void createSubject(SubjectDto subject) throws SQLException {
         CallableStatement CS = jdbcTemplate.getDataSource().getConnection().prepareCall("{call subject_insert(?, ?, ?)}");
-        CS.setInt(1, subject.getId_subject());
-        CS.setString(2,subject.getSubject());
-        CS.setInt(3, subject.getId_semester());
+        CS.setString(1, subject.getSubject());
+        CS.setInt(2,subject.getId_semester());
+        CS.setInt(3, subject.getHour());
 
         CS.executeUpdate();
     }
@@ -34,6 +34,7 @@ public class SubjectServiceImpl implements SubjectService {
     public void updateSubject(SubjectDto subject) {
 
     }
+
 
     @Override
     public List<SubjectDto> listSubject() throws SQLException {
@@ -44,7 +45,8 @@ public class SubjectServiceImpl implements SubjectService {
         while(rs.next()){
             subjectList.add(new SubjectDto(rs.getInt("id_subject")
                     ,rs.getString("subject")
-                    ,rs.getInt("id_semester")));
+                    ,rs.getInt("id_semester")
+                    ,rs.getInt("hour")));
         }
         return subjectList;
     }
@@ -63,7 +65,8 @@ public class SubjectServiceImpl implements SubjectService {
         while(rs.next()){
             subject = new SubjectDto(rs.getInt("id_subject")
                     ,rs.getString("subject")
-                    ,rs.getInt("id_semester"));
+                    ,rs.getInt("id_semester")
+                    ,rs.getInt("hour"));
         }
         return subject;
     }

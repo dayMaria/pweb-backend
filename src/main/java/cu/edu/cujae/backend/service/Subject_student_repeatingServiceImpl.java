@@ -24,7 +24,7 @@ public class Subject_student_repeatingServiceImpl implements Subject_student_rep
     @Override
     public void createSubject_student_repeating(Subject_student_repeatingDto objects) throws SQLException {
         CallableStatement CS = jdbcTemplate.getDataSource().getConnection().prepareCall("{call subject_student_repeating_insert(?, ?)}");
-        CS.setInt(1,objects.getTid_subject());
+        CS.setInt(1,objects.getId_subject());
         CS.setInt(2,objects.getId_student_repeating());
 
         CS.executeUpdate();
@@ -42,7 +42,7 @@ public class Subject_student_repeatingServiceImpl implements Subject_student_rep
                 "SELECT * FROM subject_student_repeating");
 
         while(rs.next()){
-            subject_student_repeatingList.add(new Subject_student_repeatingDto(rs.getInt("tid_subject")
+            subject_student_repeatingList.add(new Subject_student_repeatingDto(rs.getInt("id_subject")
                     ,rs.getInt("id_student_repeating")));
         }
         return subject_student_repeatingList;
@@ -60,7 +60,7 @@ public class Subject_student_repeatingServiceImpl implements Subject_student_rep
         ResultSet rs = pstmt.executeQuery();
 
         while(rs.next()){
-            subject_student_repeating = new Subject_student_repeatingDto(rs.getInt("tid_subject")
+            subject_student_repeating = new Subject_student_repeatingDto(rs.getInt("id_subject")
                     ,rs.getInt("id_student_repeating"));
         }
         return subject_student_repeating;
