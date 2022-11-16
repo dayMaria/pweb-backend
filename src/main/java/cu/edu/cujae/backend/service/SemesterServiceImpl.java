@@ -28,7 +28,7 @@ public class SemesterServiceImpl implements SemesterService {
         CS.setString(2,semester.getSemester());
 
         CS.setInt(3,semester.getId_year());
-        CS.setInt(4,semester.getId_subject_history());
+        CS.setInt(4,semester.getId_course());
 
         CS.executeUpdate();
     }
@@ -48,7 +48,7 @@ public class SemesterServiceImpl implements SemesterService {
             semesterList.add(new SemesterDto(rs.getInt("id_semester")
                     ,rs.getString("semester")
                     ,rs.getInt("id_year")
-                    ,rs.getInt("id_subject_history")));
+                    ,rs.getInt("id_course")));
         }
         return semesterList;
     }
@@ -68,7 +68,7 @@ public class SemesterServiceImpl implements SemesterService {
             semester = new SemesterDto(rs.getInt("id_semester")
                     ,rs.getString("semester")
                     ,rs.getInt("id_year")
-                    ,rs.getInt("id_subject_history"));
+                    ,rs.getInt("id_course"));
         }
         return semester;
     }
