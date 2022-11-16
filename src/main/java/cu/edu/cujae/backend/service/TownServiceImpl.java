@@ -1,6 +1,5 @@
 package cu.edu.cujae.backend.service;
 
-import cu.edu.cujae.backend.core.dto.Subject_historyDto;
 import cu.edu.cujae.backend.core.dto.TownDto;
 import cu.edu.cujae.backend.core.service.TownService;
 import org.springframework.beans.factory.annotation.Autowired;

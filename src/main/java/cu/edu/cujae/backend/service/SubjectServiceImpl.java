@@ -1,7 +1,6 @@
 package cu.edu.cujae.backend.service;
 
 import cu.edu.cujae.backend.core.dto.SubjectDto;
-import cu.edu.cujae.backend.core.dto.Subject_historyDto;
 import cu.edu.cujae.backend.core.service.SubjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;

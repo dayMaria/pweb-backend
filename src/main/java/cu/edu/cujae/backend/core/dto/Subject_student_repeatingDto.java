@@ -2,7 +2,7 @@ package cu.edu.cujae.backend.core.dto;
 
 public class Subject_student_repeatingDto {
 
-    protected Integer tid_subject;
+    protected Integer id_subject;
     protected Integer id_student_repeating;
 
 
@@ -12,23 +12,23 @@ public class Subject_student_repeatingDto {
     }
 
 
-    public Subject_student_repeatingDto(Integer tid_subject, Integer id_student_repeating) {
+    public Subject_student_repeatingDto(Integer id_subject, Integer id_student_repeating) {
 
         super();
-        this.tid_subject = tid_subject;
+        this.id_subject = id_subject;
         this.id_student_repeating = id_student_repeating;
     }
 
 
     public Subject_student_repeatingDto(Subject_student_repeatingDto subject_student_repeatingDto) {
         super();
-        this.tid_subject = subject_student_repeatingDto.getTid_subject();
+        this.id_subject = subject_student_repeatingDto.getId_subject();
         this.id_student_repeating = subject_student_repeatingDto.getId_student_repeating();
     }
 
 
-    public Integer getTid_subject() {
-        return tid_subject;
+    public Integer getId_subject() {
+        return id_subject;
     }
 
 
@@ -37,8 +37,8 @@ public class Subject_student_repeatingDto {
     }
 
 
-    public void setTid_subject(Integer tid_subject) {
-        this.tid_subject = tid_subject;
+    public void setId_subject(Integer id_subject) {
+        this.id_subject = id_subject;
     }
 
 
@@ -48,7 +48,7 @@ public class Subject_student_repeatingDto {
 
 
     public String toString() {
-        return tid_subject.toString();
+        return id_subject.toString();
 
     }
 
