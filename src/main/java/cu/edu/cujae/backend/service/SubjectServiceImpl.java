@@ -22,10 +22,11 @@ public class SubjectServiceImpl implements SubjectService {
 
     @Override
     public void createSubject(SubjectDto subject) throws SQLException {
-        CallableStatement CS = jdbcTemplate.getDataSource().getConnection().prepareCall("{call subject_insert(?, ?, ?)}");
-        CS.setString(1, subject.getSubject());
-        CS.setInt(2,subject.getId_semester());
-        CS.setInt(3, subject.getHour());
+        CallableStatement CS = jdbcTemplate.getDataSource().getConnection().prepareCall("{call subject_insert(?, ?, ?, ?)}");
+        CS.setInt(1,subject.getId_subject());
+        CS.setString(2, subject.getSubject());
+        CS.setInt(3,subject.getId_semester());
+        CS.setInt(4, subject.getHour());
 
         CS.executeUpdate();
     }
