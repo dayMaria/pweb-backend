@@ -31,8 +31,12 @@ public class Subject_student_repeatingServiceImpl implements Subject_student_rep
     }
 
     @Override
-    public void updateSubject_student_repeating(Subject_student_repeatingDto objects) {
-
+    public void updateSubject_student_repeating(Subject_student_repeatingDto objects) throws SQLException {
+        CallableStatement CS = jdbcTemplate.getDataSource().getConnection().prepareCall("{call subject_student_repeating_update(?,?)}");
+        CS.setInt(1,objects.getId_subject());
+        CS.setInt(2,objects.getId_student_repeating());
+        CS.execute();
+        CS.close();
     }
 
     @Override

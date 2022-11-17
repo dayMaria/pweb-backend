@@ -9,7 +9,7 @@ import java.util.List;
 public interface Student_historyService {
     void createStudent_history(Student_historyDto student_history) throws SQLException;
 
-    void updateStudent_history(Student_historyDto student_history);
+    void updateStudent_history(Student_historyDto student_history) throws SQLException;
 
     List<Student_historyDto> listStudent_history() throws SQLException;
 

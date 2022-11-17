@@ -8,7 +8,7 @@ import java.util.List;
 public interface YearService {
     void createYear(YearDto year) throws SQLException;
 
-    void updateYear(YearDto year);
+    void updateYear(YearDto year) throws SQLException;
 
     List<YearDto> listYear() throws SQLException;
 

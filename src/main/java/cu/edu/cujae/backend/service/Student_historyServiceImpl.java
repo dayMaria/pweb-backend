@@ -32,8 +32,14 @@ public class Student_historyServiceImpl implements Student_historyService {
     }
 
     @Override
-    public void updateStudent_history(Student_historyDto student_history) {
-
+    public void updateStudent_history(Student_historyDto student_history) throws SQLException {
+        CallableStatement CS = jdbcTemplate.getDataSource().getConnection().prepareCall("{call student_history_update(?,?,?,?)}");
+        CS.setInt(1,student_history.getId_student_history());
+        CS.setInt(2,student_history.getId_group());
+        CS.setInt(3,student_history.getNum_list());
+        CS.setInt(4,student_history.getId_course());
+        CS.execute();
+        CS.close();
     }
 
     @Override

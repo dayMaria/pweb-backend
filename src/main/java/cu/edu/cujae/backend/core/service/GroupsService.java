@@ -8,7 +8,7 @@ import java.util.List;
 public interface GroupsService {
     void createGroups(GroupsDto groups) throws SQLException;
 
-    void updateGroups(GroupsDto groups);
+    void updateGroups(GroupsDto groups) throws SQLException;
 
     List<GroupsDto> listGroups() throws SQLException;
 

@@ -9,7 +9,7 @@ public interface Student_drop_outService {
 
     void createStudent_drop_out(Student_drop_outDto student_drop_out) throws SQLException;
 
-    void updateStudent_drop_out(Student_drop_outDto student_drop_out);
+    void updateStudent_drop_out(Student_drop_outDto student_drop_out) throws SQLException;
 
     List<Student_drop_outDto> listStudent_drop_out() throws SQLException;
 

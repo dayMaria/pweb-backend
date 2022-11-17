@@ -9,7 +9,7 @@ public interface StudentService {
 
     void createStudent(StudentDto student) throws SQLException;
 
-    void updateStudent(StudentDto student);
+    void updateStudent(StudentDto student) throws SQLException;
 
     List<StudentDto> listStudent() throws SQLException;
 

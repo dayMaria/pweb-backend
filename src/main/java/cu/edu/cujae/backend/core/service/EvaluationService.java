@@ -9,7 +9,7 @@ import java.util.List;
 public interface EvaluationService {
     void createEvaluation(EvaluationDto evaluation) throws SQLException;
 
-    void updateEvaluation(EvaluationDto evaluation);
+    void updateEvaluation(EvaluationDto evaluation) throws SQLException;
 
     List<EvaluationDto> listEvaluation() throws SQLException;
 

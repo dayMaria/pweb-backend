@@ -33,8 +33,15 @@ public class EvaluationServiceImpl implements EvaluationService {
     }
 
     @Override
-    public void updateEvaluation(EvaluationDto evaluation) {
-
+    public void updateEvaluation(EvaluationDto evaluation) throws SQLException {
+        CallableStatement CS = jdbcTemplate.getDataSource().getConnection().prepareCall("{call evaluation_update(?,?,?,?,?)}");
+        CS.setInt(1,evaluation.getId_evaluation());
+        CS.setInt(2,evaluation.getEvaluation());
+        CS.setInt(3, evaluation.getId_subject());
+        CS.setInt(4, evaluation.getId_student_history());
+        CS.setDate(5,evaluation.getDate());
+        CS.execute();
+        CS.close();
     }
 
     @Override

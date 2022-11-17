@@ -10,7 +10,7 @@ public interface Subject_student_repeatingService {
 
     void createSubject_student_repeating(Subject_student_repeatingDto objects) throws SQLException;
 
-    void updateSubject_student_repeating(Subject_student_repeatingDto objects);
+    void updateSubject_student_repeating(Subject_student_repeatingDto objects) throws SQLException;
 
     List<Subject_student_repeatingDto> listSubject_student_repeating() throws SQLException;
 

@@ -1,6 +1,5 @@
 package cu.edu.cujae.backend.service;
 
-import cu.edu.cujae.backend.core.dto.CourseDto;
 import cu.edu.cujae.backend.core.dto.StudentDto;
 import cu.edu.cujae.backend.core.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,8 +35,18 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public void updateStudent(StudentDto student) {
-
+    public void updateStudent(StudentDto student) throws SQLException {
+        CallableStatement CS = jdbcTemplate.getDataSource().getConnection().prepareCall("{call student_update(?,?,?,?,?,?,?,?)}");
+        CS.setInt(1, student.getStudent_ci());
+        CS.setString(2,student.getStudent_name());
+        CS.setString(3,student.getFirst_surname());
+        CS.setString(4,student.getSecond_surname());
+        CS.setString(5,student.getSex());
+        CS.setInt(6, student.getId_town());
+        CS.setInt(7, student.getId_student());
+        CS.setInt(8, student.getId_student_history());
+        CS.execute();
+        CS.close();
     }
 
     @Override

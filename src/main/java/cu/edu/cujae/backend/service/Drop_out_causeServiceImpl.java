@@ -29,8 +29,12 @@ public class Drop_out_causeServiceImpl implements Drop_out_causeService {
     }
 
     @Override
-    public void updateDrop_out_cause(Drop_out_causeDto drop_out_cause) {
-
+    public void updateDrop_out_cause(Drop_out_causeDto drop_out_cause) throws SQLException {
+        CallableStatement CS = jdbcTemplate.getDataSource().getConnection().prepareCall("{call drop_out_cause_update(?,?)}");
+        CS.setInt(1,drop_out_cause.getId_drop_out_cause());
+        CS.setString(2,drop_out_cause.getDrop_out_cause());
+        CS.execute();
+        CS.close();
     }
 
     @Override

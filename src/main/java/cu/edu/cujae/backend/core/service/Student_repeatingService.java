@@ -9,7 +9,7 @@ import java.util.List;
 public interface Student_repeatingService {
     void createStudent_repeating(Student_repeatingDto student_repeating) throws SQLException;
 
-    void updateStudent_repeating(Student_repeatingDto student_repeating);
+    void updateStudent_repeating(Student_repeatingDto student_repeating) throws SQLException;
 
     List<Student_repeatingDto> listStudent_repeatingDto() throws SQLException;
 

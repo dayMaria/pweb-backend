@@ -32,8 +32,14 @@ public class SubjectServiceImpl implements SubjectService {
     }
 
     @Override
-    public void updateSubject(SubjectDto subject) {
-
+    public void updateSubject(SubjectDto subject) throws SQLException {
+        CallableStatement CS = jdbcTemplate.getDataSource().getConnection().prepareCall("{call subject_update(?,?,?,?)}");
+        CS.setInt(1,subject.getId_subject());
+        CS.setString(2, subject.getSubject());
+        CS.setInt(3,subject.getId_semester());
+        CS.setInt(4, subject.getHour());
+        CS.execute();
+        CS.close();
     }
 
 

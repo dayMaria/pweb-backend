@@ -31,8 +31,13 @@ public class Student_drop_outServiceImpl implements Student_drop_outService {
     }
 
     @Override
-    public void updateStudent_drop_out(Student_drop_outDto student_drop_out) {
-
+    public void updateStudent_drop_out(Student_drop_outDto student_drop_out) throws SQLException {
+        CallableStatement CS = jdbcTemplate.getDataSource().getConnection().prepareCall("{call student_drop_out_update(?,?,?)}");
+        CS.setInt(1,student_drop_out.getId_student());
+        CS.setInt(2,student_drop_out.getId_drop_out_cause());
+        CS.setInt(3,student_drop_out.getId_student_drop_out());
+        CS.execute();
+        CS.close();
     }
 
     @Override

@@ -30,8 +30,12 @@ public class TownServiceImpl implements TownService {
     }
 
     @Override
-    public void updateTown(TownDto town) {
-
+    public void updateTown(TownDto town) throws SQLException {
+        CallableStatement CS = jdbcTemplate.getDataSource().getConnection().prepareCall("{call town_update(?,?)}");
+        CS.setInt(1, town.getId_town());
+        CS.setString(2,town.getTown());
+        CS.execute();
+        CS.close();
     }
 
     @Override

@@ -9,7 +9,7 @@ public interface SubjectService {
 
     void createSubject(SubjectDto subject) throws SQLException;
 
-    void updateSubject(SubjectDto subject);
+    void updateSubject(SubjectDto subject) throws SQLException;
 
     List<SubjectDto> listSubject() throws SQLException;
 

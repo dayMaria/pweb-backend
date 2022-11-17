@@ -32,8 +32,13 @@ public class GroupsServiceImpl implements GroupsService {
     }
 
     @Override
-    public void updateGroups(GroupsDto groups) {
-
+    public void updateGroups(GroupsDto groups) throws SQLException {
+        CallableStatement CS = jdbcTemplate.getDataSource().getConnection().prepareCall("{call groups_update(?,?,?)}");
+        CS.setInt(1,groups.getId_group());
+        CS.setString(2, groups.getGroup_name());
+        CS.setInt(3, groups.getId_year());
+        CS.execute();
+        CS.close();
     }
 
     @Override

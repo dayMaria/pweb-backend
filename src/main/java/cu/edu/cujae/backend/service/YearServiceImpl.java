@@ -31,8 +31,12 @@ public class YearServiceImpl implements YearService {
     }
 
     @Override
-    public void updateYear(YearDto year) {
-
+    public void updateYear(YearDto year) throws SQLException {
+        CallableStatement CS = jdbcTemplate.getDataSource().getConnection().prepareCall("{call year_update(?,?)}");
+        CS.setInt(1, year.getId_year());
+        CS.setString(2,year.getYear());
+        CS.execute();
+        CS.close();
     }
 
     @Override

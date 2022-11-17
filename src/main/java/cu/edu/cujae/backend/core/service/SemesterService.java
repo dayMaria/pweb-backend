@@ -9,7 +9,7 @@ public interface SemesterService {
 
     void createSemester(SemesterDto semester) throws SQLException;
 
-    void updateSemester(SemesterDto semester);
+    void updateSemester(SemesterDto semester) throws SQLException;
 
     List<SemesterDto> listSemester() throws SQLException;
 

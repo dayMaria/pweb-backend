@@ -26,7 +26,6 @@ public class SemesterServiceImpl implements SemesterService {
         CallableStatement CS = jdbcTemplate.getDataSource().getConnection().prepareCall("{call semester_insert(?, ?, ?, ?)}");
         CS.setInt(1,semester.getId_semester());
         CS.setString(2,semester.getSemester());
-
         CS.setInt(3,semester.getId_year());
         CS.setInt(4,semester.getId_course());
 
@@ -34,8 +33,14 @@ public class SemesterServiceImpl implements SemesterService {
     }
 
     @Override
-    public void updateSemester(SemesterDto semester) {
-
+    public void updateSemester(SemesterDto semester) throws SQLException {
+        CallableStatement CS = jdbcTemplate.getDataSource().getConnection().prepareCall("{call semester_update(?,?,?,?)}");
+        CS.setInt(1,semester.getId_semester());
+        CS.setString(2,semester.getSemester());
+        CS.setInt(3,semester.getId_year());
+        CS.setInt(4,semester.getId_course());
+        CS.execute();
+        CS.close();
     }
 
     @Override

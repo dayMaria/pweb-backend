@@ -9,7 +9,7 @@ public interface TownService {
 
     void createTown(TownDto town) throws SQLException;
 
-    void updateTown(TownDto town);
+    void updateTown(TownDto town) throws SQLException;
 
     List<TownDto> listTown() throws SQLException;
 

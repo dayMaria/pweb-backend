@@ -10,7 +10,7 @@ import java.util.List;
 public interface Drop_out_causeService {
     void createDrop_out_cause(Drop_out_causeDto drop_out_cause) throws SQLException;
 
-    void updateDrop_out_cause(Drop_out_causeDto drop_out_cause);
+    void updateDrop_out_cause(Drop_out_causeDto drop_out_cause) throws SQLException;
 
     List<Drop_out_causeDto> listDrop_out_cause() throws SQLException;
 

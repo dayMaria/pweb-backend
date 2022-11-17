@@ -33,7 +33,7 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public void createUser(UserDto user) throws SQLException {
 		CallableStatement CS = jdbcTemplate.getDataSource().getConnection().prepareCall(
-				"{call create_user(?, ?, ?, ?, ?, ?, ?)}");
+				"{call xuser_insert(?, ?, ?, ?, ?, ?, ?)}");
 		
 		CS.setString(1, UUID.randomUUID().toString().replaceAll("-", "").substring(0, 9));
 		CS.setString(2, user.getUsername());
