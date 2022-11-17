@@ -44,7 +44,7 @@ public class Drop_out_causeServiceImpl implements Drop_out_causeService {
                 "SELECT * FROM drop_out_cause");
 
         while(rs.next()){
-            drop_out_causeList.add(new Drop_out_causeDto(rs.getInt("id_droup_out_cause")
+            drop_out_causeList.add(new Drop_out_causeDto(rs.getInt("id_drop_out_cause")
                     ,rs.getString("drop_out_cause")));
         }
         return drop_out_causeList;
@@ -62,7 +62,7 @@ public class Drop_out_causeServiceImpl implements Drop_out_causeService {
         ResultSet rs = pstmt.executeQuery();
 
         while(rs.next()){
-            drop_out_cause = new Drop_out_causeDto(rs.getInt("id_droup_out_cause")
+            drop_out_cause = new Drop_out_causeDto(rs.getInt("id_drop_out_cause")
                     ,rs.getString("drop_out_cause"));
         }
         return drop_out_cause;
