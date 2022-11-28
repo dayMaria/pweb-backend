@@ -1,6 +1,5 @@
 package cu.edu.cujae.backend.service;
 
-import cu.edu.cujae.backend.core.dto.CourseDto;
 import cu.edu.cujae.backend.core.dto.EvaluationDto;
 import cu.edu.cujae.backend.core.service.EvaluationService;
 import cu.edu.cujae.backend.core.service.Student_historyService;

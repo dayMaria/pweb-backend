@@ -7,6 +7,8 @@ public class SemesterDto {
 	protected Integer id_year;
 	protected Integer id_course;
 
+	protected YearDto yearDto;
+	protected CourseDto courseDto;
 
 
 	public SemesterDto() {
@@ -15,13 +17,15 @@ public class SemesterDto {
 	}
 
 
-	public SemesterDto(Integer id_semester, String semester, Integer id_year, Integer id_course) {
+	public SemesterDto(Integer id_semester, String semester, Integer id_year, Integer id_course, YearDto yearDto, CourseDto courseDto) {
 
 		super();
 		this.id_semester = id_semester;
 		this.semester = semester;
 		this.id_year = id_year;
 		this.id_course = id_course;
+		this.yearDto = yearDto;
+		this.courseDto = courseDto;
 	}
 
 

@@ -7,6 +7,7 @@ public class GroupsDto {
 	protected String group_name;
 	protected Integer id_year;
 
+	protected  YearDto yearDto;
 
 	public GroupsDto() {
 		super();
@@ -14,12 +15,13 @@ public class GroupsDto {
 	}
 
 
-	public GroupsDto(Integer id_group, String group_name, Integer id_year) {
+	public GroupsDto(Integer id_group, String group_name, Integer id_year, YearDto yearDto) {
 
 		super();
 		this.id_group = id_group;
 		this.group_name = group_name;
 		this.id_year = id_year;
+		this.yearDto = yearDto;
 	}
 
 

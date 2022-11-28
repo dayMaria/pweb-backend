@@ -8,6 +8,8 @@ public class Student_historyDto {
     protected Integer num_list;
     protected Integer id_course;
 
+    protected GroupsDto groupsDto;
+    protected CourseDto courseDto;
 
     public Student_historyDto() {
         super();
@@ -15,13 +17,15 @@ public class Student_historyDto {
     }
 
 
-    public Student_historyDto(Integer id_student_history, Integer id_group, Integer num_list, Integer id_course) {
+    public Student_historyDto(Integer id_student_history, Integer id_group, Integer num_list, Integer id_course, GroupsDto groupsDto, CourseDto courseDto) {
 
         super();
         this.id_student_history = id_student_history;
         this.id_group = id_group;
         this.num_list = num_list;
         this.id_course = id_course;
+        this.groupsDto = groupsDto;
+        this.courseDto = courseDto;
     }
 
 

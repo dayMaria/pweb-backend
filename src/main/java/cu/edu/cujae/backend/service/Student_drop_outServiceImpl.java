@@ -1,7 +1,8 @@
 package cu.edu.cujae.backend.service;
 
-import cu.edu.cujae.backend.core.dto.CourseDto;
 import cu.edu.cujae.backend.core.dto.Student_drop_outDto;
+import cu.edu.cujae.backend.core.service.Drop_out_causeService;
+import cu.edu.cujae.backend.core.service.StudentService;
 import cu.edu.cujae.backend.core.service.Student_drop_outService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -19,6 +20,10 @@ import java.util.List;
 @Component
 public class Student_drop_outServiceImpl implements Student_drop_outService {
 
+    @Autowired
+private StudentService studentService;
+    @Autowired
+    private Drop_out_causeService drop_out_causeService;
     @Autowired
     private JdbcTemplate jdbcTemplate;
     @Override
@@ -49,7 +54,9 @@ public class Student_drop_outServiceImpl implements Student_drop_outService {
         while(rs.next()){
             student_drop_outList.add(new Student_drop_outDto(rs.getInt("id_student")
                     ,rs.getInt("id_drop_out_cause")
-                    ,rs.getInt("id_student_drop_out")));
+                    ,rs.getInt("id_student_drop_out")
+                    ,studentService.getStudentById(rs.getInt("id_student"))
+                    ,drop_out_causeService.getDrop_out_causeById(rs.getInt("id_drop_out_cause"))));
         }
         return student_drop_outList;
     }
@@ -68,7 +75,9 @@ public class Student_drop_outServiceImpl implements Student_drop_outService {
         while(rs.next()){
             student_drop_out = new Student_drop_outDto(rs.getInt("id_student")
                     ,rs.getInt("id_drop_out_cause")
-                    ,rs.getInt("id_student_drop_out"));
+                    ,rs.getInt("id_student_drop_out")
+                    ,studentService.getStudentById(rs.getInt("id_student"))
+                    ,drop_out_causeService.getDrop_out_causeById(rs.getInt("id_drop_out_cause")));
         }
         return student_drop_out;
     }
