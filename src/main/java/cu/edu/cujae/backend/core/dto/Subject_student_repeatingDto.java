@@ -4,6 +4,8 @@ public class Subject_student_repeatingDto {
 
     protected Integer id_subject;
     protected Integer id_student_repeating;
+    protected SubjectDto subjectDto;
+    protected Student_repeatingDto student_repeatingDto;
 
 
     public Subject_student_repeatingDto() {
@@ -12,11 +14,13 @@ public class Subject_student_repeatingDto {
     }
 
 
-    public Subject_student_repeatingDto(Integer id_subject, Integer id_student_repeating) {
+    public Subject_student_repeatingDto(Integer id_subject, Integer id_student_repeating, SubjectDto subjectDto, Student_repeatingDto student_repeatingDto) {
 
         super();
         this.id_subject = id_subject;
         this.id_student_repeating = id_student_repeating;
+        this.subjectDto = subjectDto;
+        this.student_repeatingDto = student_repeatingDto;
     }
 
 

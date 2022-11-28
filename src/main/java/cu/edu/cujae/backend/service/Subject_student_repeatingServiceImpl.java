@@ -2,6 +2,8 @@ package cu.edu.cujae.backend.service;
 
 import cu.edu.cujae.backend.core.dto.CourseDto;
 import cu.edu.cujae.backend.core.dto.Subject_student_repeatingDto;
+import cu.edu.cujae.backend.core.service.Student_repeatingService;
+import cu.edu.cujae.backend.core.service.SubjectService;
 import cu.edu.cujae.backend.core.service.Subject_student_repeatingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -21,6 +23,10 @@ public class Subject_student_repeatingServiceImpl implements Subject_student_rep
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
+    @Autowired
+    private SubjectService subjectService;
+    @Autowired
+    private Student_repeatingService student_repeatingService;
     @Override
     public void createSubject_student_repeating(Subject_student_repeatingDto objects) throws SQLException {
         CallableStatement CS = jdbcTemplate.getDataSource().getConnection().prepareCall("{call subject_student_repeating_insert(?, ?)}");
@@ -47,7 +53,9 @@ public class Subject_student_repeatingServiceImpl implements Subject_student_rep
 
         while(rs.next()){
             subject_student_repeatingList.add(new Subject_student_repeatingDto(rs.getInt("id_subject")
-                    ,rs.getInt("id_student_repeating")));
+                    ,rs.getInt("id_student_repeating")
+                    ,subjectService.getSubjectById(rs.getInt("id_subject"))
+                    ,student_repeatingService.getStudent_repeatingById(rs.getInt("id_student_repeating"))));
         }
         return subject_student_repeatingList;
     }
@@ -65,7 +73,9 @@ public class Subject_student_repeatingServiceImpl implements Subject_student_rep
 
         while(rs.next()){
             subject_student_repeating = new Subject_student_repeatingDto(rs.getInt("id_subject")
-                    ,rs.getInt("id_student_repeating"));
+                    ,rs.getInt("id_student_repeating")
+                    ,subjectService.getSubjectById(rs.getInt("id_subject"))
+                    ,student_repeatingService.getStudent_repeatingById(rs.getInt("id_student_repeating")));
         }
         return subject_student_repeating;
     }

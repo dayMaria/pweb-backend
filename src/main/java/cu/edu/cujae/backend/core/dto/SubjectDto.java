@@ -7,6 +7,8 @@ protected String subject;
 protected Integer id_semester;
 protected Integer hour;
 
+protected SemesterDto semesterDto;
+
 
 public SubjectDto(){
 	super();
@@ -14,13 +16,14 @@ public SubjectDto(){
 }
 
 
-public SubjectDto(Integer id_subject,String subject,Integer id_semester,Integer hour) {
+public SubjectDto(Integer id_subject,String subject,Integer id_semester,Integer hour, SemesterDto semesterDto) {
 
 	super();
 	this.id_subject=id_subject;
 	this.subject=subject;
 	this.id_semester=id_semester;
 	this.hour=hour;
+	this.semesterDto = semesterDto;
 }
 
 

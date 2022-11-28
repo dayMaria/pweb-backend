@@ -1,6 +1,7 @@
 package cu.edu.cujae.backend.service;
 
 import cu.edu.cujae.backend.core.dto.SubjectDto;
+import cu.edu.cujae.backend.core.service.SemesterService;
 import cu.edu.cujae.backend.core.service.SubjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -19,6 +20,8 @@ import java.util.List;
 public class SubjectServiceImpl implements SubjectService {
     @Autowired
     private JdbcTemplate jdbcTemplate;
+    @Autowired
+    private SemesterService semesterService;
 
     @Override
     public void createSubject(SubjectDto subject) throws SQLException {
@@ -53,7 +56,8 @@ public class SubjectServiceImpl implements SubjectService {
             subjectList.add(new SubjectDto(rs.getInt("id_subject")
                     ,rs.getString("subject")
                     ,rs.getInt("id_semester")
-                    ,rs.getInt("hour")));
+                    ,rs.getInt("hour")
+                    ,semesterService.getSemesterById(rs.getInt("id_semester"))));
         }
         return subjectList;
     }
@@ -73,7 +77,8 @@ public class SubjectServiceImpl implements SubjectService {
             subject = new SubjectDto(rs.getInt("id_subject")
                     ,rs.getString("subject")
                     ,rs.getInt("id_semester")
-                    ,rs.getInt("hour"));
+                    ,rs.getInt("hour")
+                    ,semesterService.getSemesterById(rs.getInt("id_semester")));
         }
         return subject;
     }

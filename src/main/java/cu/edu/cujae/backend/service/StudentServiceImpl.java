@@ -1,7 +1,10 @@
 package cu.edu.cujae.backend.service;
 
 import cu.edu.cujae.backend.core.dto.StudentDto;
+import cu.edu.cujae.backend.core.dto.TownDto;
 import cu.edu.cujae.backend.core.service.StudentService;
+import cu.edu.cujae.backend.core.service.Student_historyService;
+import cu.edu.cujae.backend.core.service.TownService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
@@ -19,6 +22,12 @@ import java.util.List;
 public class StudentServiceImpl implements StudentService {
     @Autowired
     private JdbcTemplate jdbcTemplate;
+    @Autowired
+    private TownService townService;
+    @Autowired
+    private StudentService studentService;
+    @Autowired
+    private Student_historyService student_historyService;
     @Override
     public void createStudent(StudentDto student) throws SQLException {
         CallableStatement CS = jdbcTemplate.getDataSource().getConnection().prepareCall("{call student_insert(?, ?, ?, ?, ?, ?, ?, ?)}");
@@ -63,7 +72,10 @@ public class StudentServiceImpl implements StudentService {
                     ,rs.getString("sex")
                     ,rs.getInt("id_town")
                     ,rs.getInt("id_student")
-                    ,rs.getInt("id_student_history")));
+                    ,rs.getInt("id_student_history")
+                    ,townService.getTownById(rs.getInt("id_town)"))
+                    ,studentService.getStudentById(rs.getInt("id_student"))
+                    ,student_historyService.getStudent_historyById(rs.getInt("id_student_history"))));
         }
         return studentList;
     }
@@ -87,7 +99,10 @@ public class StudentServiceImpl implements StudentService {
                     ,rs.getString("sex")
                     ,rs.getInt("id_town")
                     ,rs.getInt("id_student")
-                    ,rs.getInt("id_student_history"));
+                    ,rs.getInt("id_student_history")
+                    ,townService.getTownById(rs.getInt("id_town)"))
+                    ,studentService.getStudentById(rs.getInt("id_student"))
+                    ,student_historyService.getStudent_historyById(rs.getInt("id_student_history")));
         }
         return student;
     }

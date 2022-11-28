@@ -11,6 +11,9 @@ public class StudentDto {
 	protected Integer id_town;
 	protected Integer id_student;
 	protected Integer id_student_history;
+	protected TownDto townDto;
+	protected StudentDto studentDto;
+	protected Student_historyDto student_historyDto;
 
 
 	public StudentDto() {
@@ -19,7 +22,7 @@ public class StudentDto {
 	}
 
 
-	public StudentDto(Integer student_ci, String student_name, String first_surname, String second_surname, String sex, Integer id_town, Integer id_student, Integer id_student_history) {
+	public StudentDto(Integer student_ci, String student_name, String first_surname, String second_surname, String sex, Integer id_town, Integer id_student, Integer id_student_history, TownDto townDto, StudentDto studentDto, Student_historyDto student_historyDto) {
 
 		super();
 		this.student_ci = student_ci;
@@ -30,6 +33,9 @@ public class StudentDto {
 		this.id_town = id_town;
 		this.id_student = id_student;
 		this.id_student_history = id_student_history;
+		this.townDto = townDto;
+		this.studentDto = studentDto;
+		this.student_historyDto = student_historyDto;
 	}
 
 
