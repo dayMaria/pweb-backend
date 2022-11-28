@@ -1,8 +1,8 @@
 package cu.edu.cujae.backend.service;
 
-import cu.edu.cujae.backend.core.dto.CourseDto;
 import cu.edu.cujae.backend.core.dto.GroupsDto;
 import cu.edu.cujae.backend.core.service.GroupsService;
+import cu.edu.cujae.backend.core.service.YearService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
@@ -18,6 +18,9 @@ import java.util.List;
 @Service
 @Component
 public class GroupsServiceImpl implements GroupsService {
+
+    @Autowired
+    private YearService yearService;
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
@@ -50,7 +53,8 @@ public class GroupsServiceImpl implements GroupsService {
         while(rs.next()){
             groupsList.add(new GroupsDto(rs.getInt("id_groups")
                     ,rs.getString("group_name")
-                    ,rs.getInt("id_year")));
+                    ,rs.getInt("id_year")
+                    ,yearService.getYearById(rs.getInt("id_year"))));
         }
         return groupsList;
     }
@@ -69,7 +73,8 @@ public class GroupsServiceImpl implements GroupsService {
         while(rs.next()){
             groups = new GroupsDto(rs.getInt("id_groups")
                     ,rs.getString("group_name")
-                    ,rs.getInt("id_year"));
+                    ,rs.getInt("id_year")
+                    ,yearService.getYearById(rs.getInt("id_year")));
         }
         return groups;
     }

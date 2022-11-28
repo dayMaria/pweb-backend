@@ -1,8 +1,9 @@
 package cu.edu.cujae.backend.service;
 
-import cu.edu.cujae.backend.core.dto.CourseDto;
 import cu.edu.cujae.backend.core.dto.SemesterDto;
+import cu.edu.cujae.backend.core.service.CourseService;
 import cu.edu.cujae.backend.core.service.SemesterService;
+import cu.edu.cujae.backend.core.service.YearService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
@@ -19,6 +20,10 @@ import java.util.List;
 @Component
 public class SemesterServiceImpl implements SemesterService {
 
+    @Autowired
+    private YearService yearService;
+    @Autowired
+    private CourseService courseService;
     @Autowired
     private JdbcTemplate jdbcTemplate;
     @Override
@@ -53,7 +58,9 @@ public class SemesterServiceImpl implements SemesterService {
             semesterList.add(new SemesterDto(rs.getInt("id_semester")
                     ,rs.getString("semester")
                     ,rs.getInt("id_year")
-                    ,rs.getInt("id_course")));
+                    ,rs.getInt("id_course")
+                    ,yearService.getYearById(rs.getInt("id_year"))
+                    ,courseService.getCourseById(rs.getInt("id_course"))));
         }
         return semesterList;
     }
@@ -73,7 +80,9 @@ public class SemesterServiceImpl implements SemesterService {
             semester = new SemesterDto(rs.getInt("id_semester")
                     ,rs.getString("semester")
                     ,rs.getInt("id_year")
-                    ,rs.getInt("id_course"));
+                    ,rs.getInt("id_course")
+                    ,yearService.getYearById(rs.getInt("id_year"))
+                    ,courseService.getCourseById(rs.getInt("id_course")));
         }
         return semester;
     }

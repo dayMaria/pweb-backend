@@ -7,6 +7,8 @@ public class Student_drop_outDto {
 	protected Integer id_drop_out_cause;
 	protected Integer id_student_drop_out;
 
+	protected StudentDto studentDto;
+	protected  Drop_out_causeDto drop_out_causeDto;
 
 	public Student_drop_outDto() {
 		super();
@@ -14,12 +16,14 @@ public class Student_drop_outDto {
 	}
 
 
-	public Student_drop_outDto(Integer id_student, Integer id_drop_out_cause, Integer id_student_drop_out) {
+	public Student_drop_outDto(Integer id_student, Integer id_drop_out_cause, Integer id_student_drop_out, StudentDto studentDto, Drop_out_causeDto drop_out_causeDto) {
 
 		super();
 		this.id_student = id_student;
 		this.id_drop_out_cause = id_drop_out_cause;
 		this.id_student_drop_out = id_student_drop_out;
+		this.studentDto = studentDto;
+		this.drop_out_causeDto = drop_out_causeDto;
 	}
 
 

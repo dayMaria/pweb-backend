@@ -1,7 +1,8 @@
 package cu.edu.cujae.backend.service;
 
-import cu.edu.cujae.backend.core.dto.CourseDto;
 import cu.edu.cujae.backend.core.dto.Student_historyDto;
+import cu.edu.cujae.backend.core.service.CourseService;
+import cu.edu.cujae.backend.core.service.GroupsService;
 import cu.edu.cujae.backend.core.service.Student_historyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -18,6 +19,11 @@ import java.util.List;
 @Service
 @Component
 public class Student_historyServiceImpl implements Student_historyService {
+
+    @Autowired
+private GroupsService groupsService;
+    @Autowired
+    private CourseService courseService;
     @Autowired
     private JdbcTemplate jdbcTemplate;
     @Override
@@ -52,7 +58,9 @@ public class Student_historyServiceImpl implements Student_historyService {
             student_historyList.add(new Student_historyDto(rs.getInt("id_student_history")
                     ,rs.getInt("id_group")
                     ,rs.getInt("num_list")
-                    ,rs.getInt("id_course")));
+                    ,rs.getInt("id_course")
+                    ,groupsService.getGroupsById(rs.getInt("id_group"))
+                    ,courseService.getCourseById(rs.getInt("id_course"))));
         }
         return student_historyList;
     }
@@ -72,7 +80,9 @@ public class Student_historyServiceImpl implements Student_historyService {
             student_history = new Student_historyDto(rs.getInt("id_student_history")
                     ,rs.getInt("id_group")
                     ,rs.getInt("num_list")
-                    ,rs.getInt("id_course"));
+                    ,rs.getInt("id_course")
+                    ,groupsService.getGroupsById(rs.getInt("id_group"))
+                    ,courseService.getCourseById(rs.getInt("id_course")));
         }
         return student_history;
     }
