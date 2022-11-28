@@ -3,6 +3,8 @@ package cu.edu.cujae.backend.service;
 import cu.edu.cujae.backend.core.dto.CourseDto;
 import cu.edu.cujae.backend.core.dto.EvaluationDto;
 import cu.edu.cujae.backend.core.service.EvaluationService;
+import cu.edu.cujae.backend.core.service.Student_historyService;
+import cu.edu.cujae.backend.core.service.SubjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
@@ -18,6 +20,11 @@ import java.util.List;
 @Service
 @Component
 public class EvaluationServiceImpl implements EvaluationService {
+
+    @Autowired
+    private SubjectService subjectService;
+    @Autowired
+    private Student_historyService student_historyService;
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
@@ -55,7 +62,9 @@ public class EvaluationServiceImpl implements EvaluationService {
                     ,rs.getInt("evaluation")
                     ,rs.getInt("id_subject")
                     ,rs.getInt("id_student_history")
-                    ,rs.getDate("date")));
+                    ,rs.getDate("date")
+                    ,student_historyService.getStudent_historyById(rs.getInt("id_student_history"))
+                    ,subjectService.getSubjectById(rs.getInt("id_subject"))));
         }
         return evaluationList;
     }
@@ -76,7 +85,9 @@ public class EvaluationServiceImpl implements EvaluationService {
                     ,rs.getInt("evaluation")
                     ,rs.getInt("id_subject")
                     ,rs.getInt("id_student_history")
-                    ,rs.getDate("date"));
+                    ,rs.getDate("date")
+                    ,student_historyService.getStudent_historyById(rs.getInt("id_student_history"))
+                    ,subjectService.getSubjectById(rs.getInt("id_subject")));
         }
         return evaluation;
     }

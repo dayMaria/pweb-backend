@@ -85,4 +85,5 @@ public class Student_historyServiceImpl implements Student_historyService {
         CS.setInt(1, id);
         CS.executeUpdate();
     }
+
 }
